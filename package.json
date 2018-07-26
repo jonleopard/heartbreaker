@@ -1,0 +1,35 @@
+{
+  "name": "react-express",
+  "version": "0.1.0",
+  "description": "A starter project for building react and express apps",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon --exec babel-node src/index.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.2",
+    "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "rebass": "^2.0.0-10",
+    "resource-router-middleware": "^0.7.0",
+    "styled-components": "^3.3.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "concurrently": "^3.6.0",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.1",
+    "nodemon": "^1.17.5",
+    "prettier": "^1.13.6"
+  }
+}
