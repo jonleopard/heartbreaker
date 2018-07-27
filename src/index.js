@@ -30,11 +30,7 @@ app.use(
   })
 );
 
-app.get('/hello', (req, res) => {
-  res.send({ express: 'Hello From Express' });
-});
-
-// connec to db
+// connect to db
 initializeDb(db => {
   // internal middleware
   app.use(middleware({ config, db }));
@@ -46,7 +42,5 @@ initializeDb(db => {
     console.log(`Started on port ${app.server.address().port}`);
   });
 });
-
-console.log(`Pulled from dotenv: ${process.env.SUPER_SECRET_PASS}`);
 
 export default app;
