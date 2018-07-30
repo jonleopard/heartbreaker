@@ -3,7 +3,6 @@ import { version } from '../../package.json';
 import { Router } from 'express';
 import facets from './facets';
 import request from 'request';
-import querystring from 'querystring';
 
 dotenv.config();
 
@@ -19,7 +18,8 @@ export default ({ config, db }) => {
   });
 
   api.route('/hello').get(function(req, res) {
-    res.json({ express: 'Hello From Express' });
+    res.status(200);
+    res.send({ express: 'Hello From Express' });
   });
 
   api.route('/health-check').get(function(req, res) {

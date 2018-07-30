@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import { Router } from 'express';
 import passport from 'passport';
+import jwt from 'jsonwebtoken';
+import expressJwt from 'express-jwt';
 import TwitterTokenStrategy from 'passport-twitter-token';
 import User from '../models/User';
 
@@ -11,6 +13,7 @@ export default ({ config, db }) => {
 
   // add middleware here
 
+  // Passport
   passport.use(
     new TwitterTokenStrategy(
       {
@@ -28,6 +31,41 @@ export default ({ config, db }) => {
       }
     )
   );
+
+  // JWT
+
+  const createToken = function(auth) {
+    return jwt.sign(
+      {
+        id: auth.id,
+      },
+      'my-secret',
+      {
+        expiresIn: 60 * 120,
+      }
+    );
+  };
+
+  const generateToken = function(req, res, next) {
+    req.token = createToken(req.auth);
+    return next();
+  };
+
+  const sendToken = function(req, res) {
+    res.setHeader('x-auth-token', req.token);
+    return res.status(200).send(JSON.stringify(req.user));
+  };
+  //token handling middleware
+  const authenticate = expressJwt({
+    secret: 'my-secret',
+    requestProperty: 'auth',
+    getToken: function(req) {
+      if (req.headers['x-auth-token']) {
+        return req.headers['x-auth-token'];
+      }
+      return null;
+    },
+  });
 
   return routes;
 };
