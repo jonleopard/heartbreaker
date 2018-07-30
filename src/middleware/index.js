@@ -2,8 +2,7 @@ import dotenv from 'dotenv';
 import { Router } from 'express';
 import passport from 'passport';
 import TwitterTokenStrategy from 'passport-twitter-token';
-import mongoose from 'mongoose';
-const User = mongoose.model('User');
+import User from '../models/User';
 
 dotenv.config();
 

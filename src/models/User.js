@@ -27,7 +27,7 @@ userSchema.statics.upsertTwitterUser = function(
   profile,
   cb
 ) {
-  var that = this;
+  let that = this;
   return this.findOne(
     {
       'twitterProvider.id': profile.id,
@@ -57,4 +57,5 @@ userSchema.statics.upsertTwitterUser = function(
   );
 };
 
-export default const User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
+export default User;
