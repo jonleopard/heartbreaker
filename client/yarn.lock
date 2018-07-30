@@ -5574,6 +5574,16 @@ react-error-overlay@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-4.0.0.tgz#d198408a85b4070937a98667f500c832f86bd5d4"
 
+react-icon-base@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-icon-base/-/react-icon-base-2.1.0.tgz#a196e33fdf1e7aaa1fda3aefbb68bdad9e82a79d"
+
+react-icons@^2.2.5:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-2.2.7.tgz#d7860826b258557510dac10680abea5ca23cf650"
+  dependencies:
+    react-icon-base "2.1.0"
+
 react-scripts@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/react-scripts/-/react-scripts-1.1.4.tgz#d5c230e707918d6dd2d06f303b10f5222d017c88"
@@ -5618,6 +5628,14 @@ react-scripts@1.1.4:
     whatwg-fetch "2.0.3"
   optionalDependencies:
     fsevents "^1.1.3"
+
+react-twitter-auth@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/react-twitter-auth/-/react-twitter-auth-0.0.12.tgz#44aaf53aac78359a660208be10d942f7e0ae8c33"
+  dependencies:
+    react-icons "^2.2.5"
+    url-search-params-polyfill "^2.0.0"
+    whatwg-fetch "2.0.3"
 
 react@^16.4.1:
   version "16.4.1"
@@ -6776,6 +6794,10 @@ url-parse@^1.1.8, url-parse@~1.4.0:
   dependencies:
     querystringify "^2.0.0"
     requires-port "^1.0.0"
+
+url-search-params-polyfill@^2.0.0:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/url-search-params-polyfill/-/url-search-params-polyfill-2.0.3.tgz#466b451df7e707f9a0de601fa39b0a5816402dcd"
 
 url@^0.11.0:
   version "0.11.0"
