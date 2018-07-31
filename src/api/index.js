@@ -23,11 +23,6 @@ export default ({ config, db }) => {
     res.json({ version });
   });
 
-  api.route('/hello').get(function(req, res) {
-    res.status(200);
-    res.send({ express: 'Hello From Express' });
-  });
-
   api.route('/health-check').get(function(req, res) {
     res.status(200);
     res.send('Hello World');
@@ -74,17 +69,26 @@ export default ({ config, db }) => {
   };
 
   api.route('/auth/twitter/reverse').post(function(req, res) {
-    request.post({
-      url: 'https://api.twitter.com/oauth/request_token',
-      oauth: {
-        oauth_callback: 'http%3A%2F%2Flocalhost%2Fsign-in-with-twitter%2F',
-        consumer_key: process.env.CONSUMER_KEY,
-        consumer_secret: process.env.CONSUMER_SECRET,
+    request.post(
+      {
+        url: 'https://api.twitter.com/oauth/request_token',
+        oauth: {
+          oauth_callback:
+            'http%3A%2F%2Flocalhost%3A3000%2Fapi%2Ftwitter-callback',
+          consumer_key: process.env.CONSUMER_KEY,
+          consumer_secret: process.env.CONSUMER_SECRET,
+        },
       },
-    });
-    var jsonStr =
-      '{ "' + body.replace(/&/g, '", "').replace(/=/g, '": "') + '"}';
-    res.send(JSON.parse(jsonStr));
+      function(err, r, body) {
+        if (err) {
+          return res.send(500, { message: e.message });
+        }
+
+        var jsonStr =
+          '{ "' + body.replace(/&/g, '", "').replace(/=/g, '": "') + '"}';
+        res.send(JSON.parse(jsonStr));
+      }
+    );
   });
 
   api.route('/auth/twitter').post(

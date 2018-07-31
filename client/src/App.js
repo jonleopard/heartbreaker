@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   callApi = async () => {
-    const response = await fetch('/api/hello');
+    const response = await fetch('/api/health-check');
     const body = await response.json();
 
     if (response.status !== 200) throw Error(body.message);
@@ -69,7 +69,7 @@ function Footer() {
   return (
     <Box width={1} pt={5}>
       <Tooltip text="'Cause privacy, duh.">
-        <Link href="#!" children="Why u make dis?" mr={4} color="#002e00" />
+        <Link href="#!" children="Y tho?" mr={4} color="#002e00" />
       </Tooltip>
       <Link
         href="https://www.twitter.com/jonlprd"

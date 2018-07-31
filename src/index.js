@@ -27,6 +27,7 @@ app.use(
 app.use(
   bodyParser.json({
     limit: config.bodyLimit,
+    extended: true,
   })
 );
 
